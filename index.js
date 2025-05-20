@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
+const port = 3000;
 
-const PORT = 3000;
+const usuarioRouter = require('./routers/usuario.router');
 
-app.get('/', (req, res) => {
-  res.send('Servidor Node.js funcionando!');
-});
+app.use(express.json());
+app.use('/usuarios', usuarioRouter);
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });
