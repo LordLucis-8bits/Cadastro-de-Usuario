@@ -33,7 +33,7 @@ exports.atualizar = (req, res) => {
     const { nome, email } = req.body;
     db.query('UPDATE usuario SET nome = ?, email = ? WHERE id = ?', [nome, email, id], (error) => {
         if (error) return res.status(500).json(error);
-        res.send('Usuário atualizado com sucesso!');
+        res.json({ message: 'Usuário atualizado com sucesso!' });
     });
 };
 
@@ -42,7 +42,7 @@ exports.deletar = (req, res) => {
     const id = req.params.id;
     db.query('DELETE FROM usuario WHERE id = ?', [id], (error) => {
         if (error) return res.status(500).json(error);
-        res.send('Usuário deletado com sucesso!');
+        res.json({ message: 'Usuário deletado com sucesso!' });
     });
 };
 
